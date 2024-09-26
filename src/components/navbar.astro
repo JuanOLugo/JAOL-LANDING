@@ -1,0 +1,28 @@
+---
+const {name} = Astro.props
+
+---
+
+
+
+<div class="flex items-center justify-around py-3 bg-red-500 text-white x">
+    <div>
+        <h1 class="text-3xl font-bold">{name}</h1>
+    </div>
+    <button id="btn-nav" class="md:hidden block">[X]</button>
+    
+        <div class="hidden  md:flex justify-around w-96 ">
+            <a href="" class="">Ir a {name} System</a>
+            <a href="" class="">Sobre nosotros</a>
+        </div> 
+        <div id="block-nav" class="hidden  flex-col absolute md:hidden top-16 bg-red-500 pt-2 pb-5 rounded-md left-3 justify-around w-64">
+            <a href="" class="mx-5 border-b my-1">Ir a {name} System</a>
+            <a href="" class="mx-5 border-b my-1 ">Sobre nosotros</a>
+        </div>
+</div>
+
+
+
+<article class="md:block hidden">
+    <slot/>
+</article>
