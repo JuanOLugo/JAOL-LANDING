@@ -1,0 +1,15 @@
+---
+const {message, linkmessage, link} = Astro.props
+---
+
+<div
+  class="bg-red-900 text-white flex py-2 justify-center items-center"
+  id="ad"
+>
+  <h1>{message}</h1>
+  <a href={link} class="font-bold mx-2">{linkmessage} </a>
+  <button
+    class="absolute right-5 hover:bg-red-400 hover:bg-opacity-45 px-2 rounded-md"
+    id="btn">X</button
+  >
+</div>

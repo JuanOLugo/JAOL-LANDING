@@ -1,67 +1,135 @@
 ---
-const {doc_title} = Astro.props
-import Navbar from "../components/navbar.astro"
+const { doc_title } = Astro.props;
+import Navbar from "../components/navbar.astro";
+import Ad from "../components/Ad.astro";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{doc_title}</title>
-
-
-</head>
-<body>
+  </head>
+  <body class="bg-red-500">
     <Navbar name="JAOL">
-        <div class="bg-red-900 text-white flex py-2 justify-center items-center" id="ad">
-            <h1>¿Quieres saber mas?</h1>
-            <a href="" class="font-bold mx-2">Envianos un email </a>
-            <button class="absolute right-5 hover:bg-red-400 hover:bg-opacity-45 px-2 rounded-md " id="btn">X</button>
-        </div>
+      <Ad
+        message="¿Quieres saber mas?"
+        linkmessage="Contactanos"
+        link="/contact"
+      />
     </Navbar>
-    
+
     <article>
-        <slot/>
+      <slot />
     </article>
 
     <script>
-import type { effect } from "astro:schema"
+      import { SiObservable } from "react-icons/si";
 
+      const ad = document.getElementById("ad");
+      const btn = document.getElementById("btn");
 
+      btn.addEventListener("click", () => {
+        ad.style.display = "none";
+      });
 
+      const btn_nav = document.getElementById("btn-nav");
+      const block_nav = document.getElementById("block-nav");
+      let isOpen = false;
+      btn_nav.addEventListener("click", () => {
+        if (isOpen == false) {
+          block_nav.style.display = "flex";
+          isOpen = true;
+        } else {
+          block_nav.style.display = "none";
+          isOpen = false;
+        }
+      });
 
-        const ad = document.getElementById("ad")
-        const btn = document.getElementById("btn")
-        
-        btn.addEventListener("click", () => {
-            ad.style.display = "none"
-        })
+      const text = document.getElementById("text");
 
-        let document_w = 700
+      const words = ["Controla", "Gestiona", "Sigue", "Almacena"];
 
-        const btn_nav = document.getElementById("btn-nav")
-        const block_nav = document.getElementById("block-nav")
-        let isOpen = false
-        btn_nav.addEventListener("click", ( ) => {
-            if(isOpen == false){
-                block_nav.style.display = "flex"
-                isOpen = true
-            }else{
-                block_nav.style.display = "none"
-                isOpen = false
+      let num = 0;
+
+      words.map((e, i) => {
+        setTimeout(() => {
+          text.innerHTML = e;
+          num++;
+          if (num == 3) {
+            num = 0;
+          }
+        }, i * 1000);
+      });
+
+      const items_nav = ["Funcionamiento", "Historias", "Planes"];
+
+      const updateDisplay = () => {
+        const del_item = items_nav.filter((e, i) => {
+          if (e != items_nav[indextodel]) {
+            return e;
+          }
+        });
+        console.log(del_item)
+        items.innerHTML = `
+            <a href="#${del_item[0][0].toLocaleLowerCase()}" class="text-xl px-5 py-2 ">${del_item[0]}</a>
+            <a href="#${del_item[1][0].toLocaleLowerCase()}" class="text-xl px-5 py-2 ">${del_item[1]}</a>`;
+      };
+
+      const navi = document.getElementById("navi");
+      const items = document.getElementById("items");
+      const card = document.querySelectorAll(".card");
+      const fun = document.getElementById("fun");
+      const pla = document.getElementById("pla");
+      const his = document.getElementById("his");
+      let indextodel = 0;
+
+      const observer = new IntersectionObserver((e) => {
+        e.forEach((h) => {
+          if (h.isIntersecting) {
+            if (h.target.id == "f") {
+              fun.classList.add("border-b-2");
+              pla.classList.remove("border-b-2");
+              his.classList.remove("border-b-2");
+              navi.textContent = "Funcionamiento";
+              indextodel = 0;
+              updateDisplay();
+            } else if (h.target.id == "p") {
+              fun.classList.remove("border-b-2");
+              pla.classList.add("border-b-2");
+              his.classList.remove("border-b-2");
+              navi.textContent = "Planes";
+              indextodel = 2;
+              updateDisplay();
+            } else if (h.target.id == "h") {
+              fun.classList.remove("border-b-2");
+              pla.classList.remove("border-b-2");
+              his.classList.add("border-b-2");
+              navi.textContent = "Historias";
+              indextodel = 1;
+              updateDisplay();
             }
-        })
-        
-        const text = document.getElementById("text")
+          }
+        });
+      });
 
-        const words = ["Controla", "Gestiona", "Sigue", "Almacena"]
+      card.forEach((e) => {
+        observer.observe(e);
+      });
 
-        words.map((e,i) => {
-            setTimeout(() => {text.innerHTML = e}, i*  1000)
-        })
-
+      const navi_opener = document.getElementById("navi-opener")
+      const itemspnavi = document.getElementById("items-p-navi")
+      let is_navi_open = false
+      navi_opener.addEventListener("click", () => {
+        if(!is_navi_open){
+          itemspnavi.style.display = "block"
+          is_navi_open = true
+        }else{
+          itemspnavi.style.display = "none"
+          is_navi_open = false
+        }
+      })
     </script>
-
-</body>
+  </body>
 </html>
