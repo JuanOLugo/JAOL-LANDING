@@ -4,20 +4,20 @@ const { title, subtitle, description, img, id } = Astro.props;
 
 <div id={id} class="card w-full border-b">
     <div class="flex flex-col md:flex-row justify-center md:justify-evenly items-center h-screen">
-      <div class=" w-5/12 ">
+      <div class=" w-11/12 text-center md:text-start md:px-36">
         <h1 class="text-2xl  text-red-900">{title}</h1>
         <h1 class="text-4xl font-semibold text-white my-2">{subtitle}</h1>
-        <p class="w-56 md:w-auto">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
-          iste quas eveniet exercitationem nulla pariatur veritatis perspiciatis
-          beatae, sit accusantium.
+        <p class=" md:w-auto">
+          {description}
         </p>
-        <slot/>
+        <div >
+          <slot/>
+        </div>
       </div>
 
-      <div class=" md:w-5/12 w-full">
-        <div class=" mx-5 py-3 my-5 rounded-full  -z-10 bg-red-100">
-            <img src={img} alt="" width="300" class="z-30 my-10" />
+      <div class=" hidden md:block   w-full">
+        <div class=" mx-5 p-10 my-5 rounded-full   -z-10 bg-red-100">
+            <img src={img} alt="" width="300" class="z-30 my-10 mx-auto" />
         </div>
         
       </div>

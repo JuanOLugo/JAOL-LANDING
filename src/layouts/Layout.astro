@@ -71,7 +71,7 @@ import Ad from "../components/Ad.astro";
             return e;
           }
         });
-        console.log(del_item)
+        console.log(del_item);
         items.innerHTML = `
             <a href="#${del_item[0][0].toLocaleLowerCase()}" class="text-xl px-5 py-2 ">${del_item[0]}</a>
             <a href="#${del_item[1][0].toLocaleLowerCase()}" class="text-xl px-5 py-2 ">${del_item[1]}</a>`;
@@ -118,18 +118,149 @@ import Ad from "../components/Ad.astro";
         observer.observe(e);
       });
 
-      const navi_opener = document.getElementById("navi-opener")
-      const itemspnavi = document.getElementById("items-p-navi")
-      let is_navi_open = false
+      const navi_opener = document.getElementById("navi-opener");
+      const itemspnavi = document.getElementById("items-p-navi");
+      let is_navi_open = false;
       navi_opener.addEventListener("click", () => {
-        if(!is_navi_open){
-          itemspnavi.style.display = "block"
-          is_navi_open = true
-        }else{
-          itemspnavi.style.display = "none"
-          is_navi_open = false
+        if (!is_navi_open) {
+          itemspnavi.style.display = "block";
+          is_navi_open = true;
+        } else {
+          itemspnavi.style.display = "none";
+          is_navi_open = false;
         }
-      })
+      });
+
+      const sencillo = document.getElementById("s");
+      const premium = document.getElementById("p-p");
+
+      const sencillo_c = document.getElementById("s-c");
+      const premium_c = document.getElementById("p-c");
+
+      let isOpen_s = false;
+      let isOpen_p = false;
+
+      const itemsPlanes = [
+        {
+          title: "Plan sencillo",
+          cost: 0,
+          desc: "Disfruta del plan sencillo, podiendo almacenar una cantidad infinita de productos y pudiendo guardar, registar y organizar facturas a tu gusto, sintete libre de hacer lo que quieras ",
+        },
+        {
+          title: "Plan Premium",
+          cost: 30000,
+          desc: "Disfruta del plan premium, pudiendo hacer todo lo que hace el plan sencillo MAS INTELIGENCIA ARTIFICIAL Y ASESORIA PERSONALIZADA ",
+        },
+      ];
+
+      sencillo_c.addEventListener("click", () => {
+        if (!isOpen_s) {
+          sencillo.innerHTML = `
+
+          <div class="bg-red-500 shadow-lg border rounded-xl p-3" >
+            <h1 class="text-2xl text-white">${itemsPlanes[0].title}</h1>
+            <p class="font-medium">${itemsPlanes[0].desc}</p>
+            <p class="font-medium text-white text-3xl">Costo: $${itemsPlanes[0].cost.toLocaleString("es-CO")}/mes</p>
+            <button class="bg-red-500 shadow-lg border rounded-md px-3 py-1 text-center mt-3  text-white  hover:bg-red-700 transition-all">Adquirir!</button>
+        </div>  
+          
+          `;
+
+          isOpen_s = true;
+        } else {
+          sencillo.innerHTML = ``;
+          isOpen_s = false;
+        }
+      });
+
+      premium_c.addEventListener("click", () => {
+        if (!isOpen_p) {
+          premium.innerHTML = `
+
+          <div class="bg-red-500 shadow-lg border rounded-xl p-3" >
+            <h1 class="text-2xl text-white">${itemsPlanes[1].title}</h1>
+            <p class="font-medium">${itemsPlanes[1].desc}</p>
+            <p class="font-medium text-white text-3xl">Costo: $${itemsPlanes[1].cost.toLocaleString("es-CO")}/mes</p>
+            <button class="bg-red-500 shadow-lg border rounded-md px-3 py-1 text-center mt-3  text-white  hover:bg-red-700 transition-all">Adquirir!</button>
+        </div>  
+          
+          `;
+
+          isOpen_p = true;
+        } else {
+          premium.innerHTML = ``;
+          isOpen_p = false;
+        }
+      });
+
+      const historys = [
+        {
+          title: "Inventario actualizado automáticamente",
+          message:
+            "El sistema de IA detectó un incremento en el stock de laptops y ajustó el inventario sin intervención manual.",
+        },
+        {
+          title: "Predicción de faltantes",
+          message:
+            "La IA predijo que se agotarán los teléfonos inteligentes en dos semanas y recomendó realizar un nuevo pedido.",
+        },
+        {
+          title: "Optimización de almacenamiento",
+          message:
+            "El sistema reorganizó automáticamente el inventario, asignando más espacio a productos de alta rotación como tablets.",
+        },
+        {
+          title: "Notificación de vencimiento",
+          message:
+            "La IA identificó productos próximos a vencer y envió una alerta para evitar pérdidas.",
+        },
+        {
+          title: "Solicitud de reabastecimiento automático",
+          message:
+            "El sistema realizó una solicitud automática para reabastecer el inventario de impresoras, con base en el historial de ventas.",
+        },
+      ];
+
+      const cantidadHistorias = historys.length;
+
+      const parent_slider = document.getElementById("slider-parent");
+
+      const up = document.getElementById("up");
+      const low = document.getElementById("low");
+
+      let num_slider = 1;
+
+      parent_slider.innerHTML = `
+         <h1 class="text-xl font-bold text-white">${historys[0].title}</h1>
+        <p>${historys[0].message}</p>
+        `;
+
+      up.addEventListener("click", () => {
+        if (num_slider == cantidadHistorias) {
+          num_slider = 0;
+        }
+
+        parent_slider.innerHTML = `
+         <h1 class="text-xl font-bold text-white">${historys[num_slider].title}</h1>
+        <p>${historys[num_slider].message}</p>
+        `;
+        num_slider++;
+      });
+
+      low.addEventListener("click", () => {
+        console.log(num_slider)
+        if (num_slider == 0) {
+          num_slider = cantidadHistorias - 1;
+        }
+
+        parent_slider.innerHTML = `
+              <h1 class="text-xl font-bold text-white">${historys[num_slider].title}</h1>
+              <p>${historys[num_slider].message}</p>`;
+
+        num_slider--;
+
+        
+      });
     </script>
   </body>
 </html>

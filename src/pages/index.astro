@@ -20,7 +20,7 @@ import Layout from "../layouts/Layout.astro";
   </div>
 
   <div>
-    <div class="z-50 hidden md:sticky top-0 md:flex justify-around text-center ">
+    <div class="z-50 hidden md:sticky top-0 md:flex justify-around text-center">
       <a
         id="fun"
         href="#f"
@@ -65,7 +65,8 @@ import Layout from "../layouts/Layout.astro";
       ,
       subtitle="Ayudamos a maximizar tu dia"
       ,
-      description=""
+      description=`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
+          iste quas eveniet exercitationem nulla pariatur veritatis `
       ,
       id="f",
 	  img="../../public/p1.svg"
@@ -76,20 +77,48 @@ import Layout from "../layouts/Layout.astro";
       ,
       subtitle="Descubre cómo los clientes consiguen más con JAOL"
       ,
-      description=""
+      description=`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
+          iste quas eveniet exercitationem nulla pariatur veritatis `
       ,
       id="h",
 	  img="../../public/c1.svg"
-    />
+    > 
+
+    <div  class="flex my-10 items-center h-64 md:h-40">
+      <button class="mx-4 text-white font-bold text-3xl bg-red-700 rounded-xl text-center  p-3" id="low">{"<"}</button>
+      <div class="bg-red-500 rounded-lg p-5 border shadow-xl" id="slider-parent">
+       
+      </div>
+      <button class="mx-4 text-white font-bold text-3xl bg-red-700 rounded-xl text-center  p-3" id="up">{">"}</button>
+    </div>
+
+  </Card>
 	
 	<Card
-      title=""
+      title="Planes"
       ,
-      subtitle="Ayudamos a maximizar tu dia"
+      subtitle="Disfruta de nuestros planes"
       ,
-      description=""
-      ,
-      id="p"
-    />
+      id="p",
+      img="../../public/a1.svg"
+    
+    > 
+    
+    <div>
+      <div class="bg-red-500 shadow-lg border text-3xl px-2 rounded-xl text-white  my-2 cursor-pointer" id="s-c">
+        <h1>Plan sencillo</h1>
+      </div>
+      <div id="s">
+        
+      </div>
+      <div class="bg-red-500 shadow-lg border text-3xl px-2 rounded-xl text-white  my-2 cursor-pointer" id="p-c">
+        <h1>Plan Premium</h1>
+      </div>
+      <div id="p-p">
+
+      </div>
+    </div>
+    
+  </Card>
   </div>
 </Layout>
