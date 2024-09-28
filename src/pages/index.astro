@@ -47,18 +47,17 @@ import Layout from "../layouts/Layout.astro";
       </a>
     </div>
 
-	<div id="navi-opener" class="bg-red-900 py-3 md:hidden flex justify-between text-white text-2xl cursor-pointer  text-bold z-50 sticky top-0">
-		<h1 class="ml-5" id="navi">Funcionamiento</h1>
-		<h1 class="font-bold mr-5">-</h1>
-	</div>
+    <div
+      id="navi-opener"
+      class="bg-red-900 py-3 md:hidden flex justify-between text-white text-2xl cursor-pointer text-bold z-50 sticky top-0"
+    >
+      <h1 class="ml-5" id="navi">Funcionamiento</h1>
+      <h1 class="font-bold mr-5">-</h1>
+    </div>
 
-	<div class=" w-full  text-white sticky z-50 top-14 hidden" id="items-p-navi">
-		
-		<div class="bg-red-600 py-3   flex flex-col " id="items">
-			
-		</div>
-		
-	</div>
+    <div class="w-full text-white sticky z-50 top-14 hidden" id="items-p-navi">
+      <div class="bg-red-600 py-3 flex flex-col" id="items"></div>
+    </div>
 
     <Card
       title="Como funciona"
@@ -68,11 +67,12 @@ import Layout from "../layouts/Layout.astro";
       description=`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
           iste quas eveniet exercitationem nulla pariatur veritatis `
       ,
-      id="f",
-	  img="../../public/p1.svg"
+      id="f"
+      ,
+      img="../../public/p1.svg"
     />
 
-	<Card
+    <Card
       title="Casos de clientes"
       ,
       subtitle="Descubre cómo los clientes consiguen más con JAOL"
@@ -80,6 +80,7 @@ import Layout from "../layouts/Layout.astro";
       description=`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
           iste quas eveniet exercitationem nulla pariatur veritatis `
       ,
+<<<<<<< HEAD
       id="h",
 	  img="../../public/c1.svg"
     > 
@@ -120,5 +121,23 @@ import Layout from "../layouts/Layout.astro";
     </div>
     
   </Card>
+=======
+      id="h"
+      ,
+      img="../../public/c1.svg"
+    />
+
+    <Card title="" , subtitle="Ayudamos a maximizar tu dia" , id="p" > 
+
+      <div id="s-pa">
+        <h1>Secillo</h1>
+      </div>
+
+      <div id="p-pa">
+        <h1>Premium</h1>
+      </div>
+
+    </Card>
+>>>>>>> 5633ad4fd33f58630f1867a04ea84cc21c072dd6
   </div>
 </Layout>
